@@ -1,7 +1,8 @@
 Iteratively makes multiple DNS queries for a given hostname and displays the IP addresses returned.
 
-Example:
 
+Example on Windows:
+```
 IP             Count Percent
 --             ----- -------
 192.30.253.113     5 50.00 %
@@ -9,3 +10,18 @@ IP             Count Percent
 
 
 10 iterations, 2 unique responses for github.com
+```
+
+Example on Linux:
+```
+IP                     Count Percent
+--                     ----- -------
+2001:4998:58:2201::73      3 30.000%
+2001:4998:44:204::100d     4 40.000%
+2001:4998:c:e33::53        3 30.000%
+
+
+10 iterations, 3 unique responses for yahoo.com
+```
+
+Works with PowerShell Core (6.0.1).
