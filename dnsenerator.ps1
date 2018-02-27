@@ -1,14 +1,16 @@
 #DNS iterator
 
-$hostname = "yahoo.com"
-$iterations = 10
+param (
+    [string]$hostname = "github.com",
+    [int]$iterations = 1
+)
 function Iterate-Resolution {
     param (
         [Parameter(Mandatory)] [string]$hostname,
         [Parameter(Mandatory)] [int]$iterations
     )
     $responses = @{}
-
+    write-host "Working..."
     for ($i=0; $i -lt $iterations; $i++) {
         #Query DNS
         try {$ip = [System.Net.Dns]::GetHostAddresses($hostname).IPAddressToString | Select-Object -First 1}
