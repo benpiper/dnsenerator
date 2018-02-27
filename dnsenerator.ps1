@@ -7,14 +7,14 @@ param (
 function Iterate-Resolution {
     param (
         [Parameter(Mandatory)] [string]$hostname,
-        [Parameter(Mandatory)] [int]$iterations
+        [Parameter(Mandatory)] [ValidateRange(1,90)] [int]$iterations
     )
     $responses = @{}
     write-host "Working..."
     for ($i=0; $i -lt $iterations; $i++) {
         #Query DNS
         try {$ip = [System.Net.Dns]::GetHostAddresses($hostname).IPAddressToString | Select-Object -First 1}
-        catch { "Name resolution failed. Please check the hostname."; break}
+        catch { "Name resolution failed. Please check the hostname."; exit}
         if ($PSVersionTable.Platform -eq "Win32NT") { ipconfig /flushdns > $null }
 
         #if address is in hashtable
