@@ -2,12 +2,14 @@
 
 param (
     [string]$hostname = "github.com",
-    [int]$iterations = 1
+    [int]$iterations = 1,
+    [int]$sleeptime = 1
 )
 function Iterate-Resolution {
     param (
         [Parameter(Mandatory)] [string]$hostname,
-        [Parameter(Mandatory)] [ValidateRange(1,90)] [int]$iterations
+        [Parameter(Mandatory)] [ValidateRange(1,90)] [int]$iterations,
+        [Parameter(Mandatory)] [ValidateRange(1,300)] [int]$sleeptime
     )
     $responses = @{}
     write-host "Working..."
@@ -19,6 +21,7 @@ function Iterate-Resolution {
 
         #if address is in hashtable
         if ($responses[$ip] -ge 1) { $responses[$ip]++ } else { $responses.Add($ip,1)}
+        Start-Sleep -Seconds $sleeptime
     }
     #$responses.GetEnumerator()
     $recordlist = @()
@@ -32,6 +35,6 @@ function Iterate-Resolution {
     return $recordlist
 }
 
-$records = Iterate-Resolution -hostname $hostname -iterations $iterations
+$records = Iterate-Resolution -hostname $hostname -iterations $iterations -sleeptime $sleeptime
 $records | Format-Table -Property ip,count,percent
 Write-Host $iterations "iterations," $records.count "unique responses" for $hostname
