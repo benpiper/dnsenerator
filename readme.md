@@ -1,7 +1,7 @@
 Iteratively makes multiple DNS queries for a given hostname and displays the IP addresses returned.
 
 
-Example on Windows:
+Example on Windows (IPv4 only):
 ```
 IP             Count Percent
 --             ----- -------
@@ -12,7 +12,7 @@ IP             Count Percent
 10 iterations, 2 unique responses for github.com
 ```
 
-Example on Linux:
+Example on Linux (dual stack):
 ```
 IP                     Count Percent
 --                     ----- -------
