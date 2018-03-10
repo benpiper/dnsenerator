@@ -1,18 +1,20 @@
 Iteratively makes multiple DNS queries for a given hostname and displays the IP addresses returned.
 
-
-Example on Windows (IPv4 only):
+## Example on Windows (IPv4 only):
 ```
+$ .\dnsenerator.ps1 -hostname github.com -iterations 10 -sleeptime 2
+Working...
+
 IP             Count Percent
 --             ----- -------
-192.30.253.113     5 50.00 %
-192.30.253.112     5 50.00 %
+192.30.253.113     6 60.00 %
+192.30.253.112     4 40.00 %
 
 
 10 iterations, 2 unique responses for github.com
 ```
 
-Example on Linux (dual stack):
+## Example on Linux (dual stack):
 ```
 IP                     Count Percent
 --                     ----- -------
