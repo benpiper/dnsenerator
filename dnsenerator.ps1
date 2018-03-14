@@ -1,15 +1,15 @@
 #DNS iterator
 
 param (
-    [string]$hostname = "github.com",
-    [int]$iterations = 1,
-    [int]$sleeptime = 1
+    [Parameter(Mandatory)] [string]$hostname,
+    [Parameter(Mandatory)] [int]$iterations,
+    [Parameter(Mandatory)] [int]$sleeptime
 )
 function Iterate-Resolution {
     param (
         [Parameter(Mandatory)] [string]$hostname,
         [Parameter(Mandatory)] [ValidateRange(1,90)] [int]$iterations,
-        [Parameter(Mandatory)] [ValidateRange(1,300)] [int]$sleeptime
+        [Parameter(Mandatory)] [ValidateRange(0,43200)] [int]$sleeptime
     )
     $responses = @{}
     write-host "Working..."
